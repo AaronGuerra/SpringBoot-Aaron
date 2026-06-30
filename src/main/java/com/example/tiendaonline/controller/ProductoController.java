@@ -3,6 +3,7 @@ package com.example.tiendaonline.controller;
 import com.example.tiendaonline.dto.ProductoRequestDTO;
 import com.example.tiendaonline.dto.ProductoResponseDTO;
 import com.example.tiendaonline.service.ProductoService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class ProductoController {
     private final ProductoService service;
 
     @PostMapping
-    public ProductoResponseDTO createProducto(@RequestBody ProductoRequestDTO request) {
+    public ProductoResponseDTO createProducto(@Valid @RequestBody ProductoRequestDTO request) {
         return service.crearProducto(request);
     }
 
@@ -31,7 +32,7 @@ public class ProductoController {
     }
 
     @PutMapping("/{id_producto}")
-    public ProductoResponseDTO actualizarProducto(@PathVariable Long id_producto, @RequestBody ProductoRequestDTO request) {
+    public ProductoResponseDTO actualizarProducto(@PathVariable Long id_producto, @Valid @RequestBody ProductoRequestDTO request) {
         return service.actualizarProducto(id_producto,request);
     }
 

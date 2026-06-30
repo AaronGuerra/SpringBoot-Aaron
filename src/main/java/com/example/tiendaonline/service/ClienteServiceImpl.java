@@ -2,6 +2,7 @@ package com.example.tiendaonline.service;
 
 import com.example.tiendaonline.dto.ClienteRequestDTO;
 import com.example.tiendaonline.dto.ClienteResponseDTO;
+import com.example.tiendaonline.exception.RecursoNoEncontradoException;
 import com.example.tiendaonline.mapper.ClienteMapper;
 import com.example.tiendaonline.model.ClienteModel;
 import com.example.tiendaonline.repository.ClienteRepository;
@@ -36,7 +37,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteResponseDTO clienteById(Long id_cliente){
         ClienteModel clienteMod = repository.findById(id_cliente)
-                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+                .orElseThrow(() -> new RecursoNoEncontradoException("Cliente no encontrado"));
         return mapper.toDTO(clienteMod);
     }
 

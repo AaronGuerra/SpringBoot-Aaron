@@ -2,6 +2,7 @@ package com.example.tiendaonline.service;
 
 import com.example.tiendaonline.dto.ProductoRequestDTO;
 import com.example.tiendaonline.dto.ProductoResponseDTO;
+import com.example.tiendaonline.exception.RecursoNoEncontradoException;
 import com.example.tiendaonline.mapper.ProductoMapper;
 import com.example.tiendaonline.model.ProductoModel;
 import com.example.tiendaonline.repository.ProductoRepository;
@@ -37,7 +38,7 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public ProductoResponseDTO productoById(Long id_producto){
         ProductoModel productoMod = repository.findById(id_producto)
-                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+                .orElseThrow(() -> new RecursoNoEncontradoException("Producto no encontrado"));
         return mapper.toDTO(productoMod);
     }
 
