@@ -44,7 +44,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteResponseDTO actualizarCliente(Long id_cliente, ClienteRequestDTO request){
-        ClienteModel clienteMod = repository.findById(id_cliente).orElseThrow(() ->new RuntimeException("Cliente no encontrado"));
+        ClienteModel clienteMod = repository.findById(id_cliente).orElseThrow(() ->new RecursoNoEncontradoException("Cliente no encontrado"));
         clienteMod.setNombre(request.nombre());
         clienteMod.setDireccion(request.direccion());
         clienteMod.setTelefono(request.telefono());

@@ -44,7 +44,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     public ProductoResponseDTO actualizarProducto(Long id_producto, ProductoRequestDTO request){
-        ProductoModel productoMod = repository.findById(id_producto).orElseThrow(() ->new RuntimeException("Producto no encontrado"));
+        ProductoModel productoMod = repository.findById(id_producto).orElseThrow(() ->new RecursoNoEncontradoException("Producto no encontrado"));
         productoMod.setNombre(request.nombre());
         productoMod.setDescripcion(request.descripcion());
         productoMod.setPrecio(request.precio());
