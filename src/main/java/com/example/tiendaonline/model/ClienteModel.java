@@ -20,7 +20,9 @@ public class ClienteModel {
     private String correo;
     private String telefono;
     private String direccion;
-
+    private String password;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
 
 
