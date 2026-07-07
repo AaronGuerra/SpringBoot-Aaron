@@ -1,5 +1,6 @@
 package com.example.tiendaonline.dto;
 
+import com.example.tiendaonline.model.Rol;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +17,8 @@ public record ClienteRequestDTO(
         @Size(min = 3, max = 12)
         String telefono,
         @NotBlank(message = "La dirección no puede estar vacía")
-        String direccion
+        String direccion,
+        String password,
+        Rol rol
 ) {
 }

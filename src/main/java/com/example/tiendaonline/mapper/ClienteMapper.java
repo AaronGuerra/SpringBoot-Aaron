@@ -15,6 +15,7 @@ public class ClienteMapper {
         clienteMod.setDireccion(request.direccion());
         clienteMod.setCorreo(request.correo());
         clienteMod.setTelefono(request.telefono());
+        clienteMod.setRol(request.rol());
         return clienteMod;
     }
 

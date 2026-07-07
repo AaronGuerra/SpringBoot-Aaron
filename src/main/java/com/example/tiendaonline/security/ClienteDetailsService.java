@@ -1,6 +1,5 @@
 package com.example.tiendaonline.security;
 
-
 import com.example.tiendaonline.exception.RecursoNoEncontradoException;
 import com.example.tiendaonline.model.ClienteModel;
 import com.example.tiendaonline.repository.ClienteRepository;

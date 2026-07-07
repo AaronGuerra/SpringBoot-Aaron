@@ -7,6 +7,7 @@ import com.example.tiendaonline.mapper.ClienteMapper;
 import com.example.tiendaonline.model.ClienteModel;
 import com.example.tiendaonline.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +18,13 @@ public class ClienteServiceImpl implements ClienteService {
 
     private final ClienteRepository repository;
     private final ClienteMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
     // Métodos
     @Override
     public ClienteResponseDTO crearCliente(ClienteRequestDTO request){
         ClienteModel clienteMod = mapper.toModel(request);
+        clienteMod.setPassword(passwordEncoder.encode(request.password()));
         repository.save(clienteMod);
         return mapper.toDTO(clienteMod);
     }
@@ -50,6 +53,8 @@ public class ClienteServiceImpl implements ClienteService {
         clienteMod.setTelefono(request.telefono());
         clienteMod.setCorreo(request.correo());
         clienteMod.setApellido(request.apellido());
+        clienteMod.setRol(request.rol());
+        clienteMod.setPassword(passwordEncoder.encode(request.password()));
         ClienteModel actualizado = repository.save(clienteMod);
         return mapper.toDTO(actualizado);
     }
