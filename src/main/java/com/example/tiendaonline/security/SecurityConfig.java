@@ -35,8 +35,8 @@ public class SecurityConfig {
                         // Todos pueden logearse
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         // Cualquier otra ruta
-                        .anyRequest().authenticated())
-                .httpBasic(httpBasic -> {});
+                        .anyRequest().authenticated());
+
 
         return http.build();
     }
